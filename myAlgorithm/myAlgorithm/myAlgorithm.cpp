@@ -4,14 +4,44 @@
 #include "pch.h"
 #include <iostream>
 #include "pow.hpp"
+#include "myGraph.h"
+#include "dijkstra.hpp"
 
 int main()
 {
-    std::cout << "pow(3, 0)" << myPow(3, 0) << std::endl;
-    std::cout << "pow(3, 1)" << myPow(3, 1) << std::endl;
-    std::cout << "pow(3, 2)" << myPow(3, 2) << std::endl;
-    std::cout << "pow(3, 7)" << myPow(3, 7) << std::endl;
-    std::cout << "pow(3,-7)" << myPow(3, -7) << std::endl;
+    {
+        std::cout << "pow(3, 0)" << myPow(3, 0) << std::endl;
+        std::cout << "pow(3, 1)" << myPow(3, 1) << std::endl;
+        std::cout << "pow(3, 2)" << myPow(3, 2) << std::endl;
+        std::cout << "pow(3, 7)" << myPow(3, 7) << std::endl;
+        std::cout << "pow(3,-7)" << myPow(3, -7) << std::endl;
+    }
+
+    {
+        MyGraph myGraph;
+        myGraph.AddEdge('a', 'b', 1);
+        myGraph.AddEdge('a', 'c', 3);
+        myGraph.AddEdge('b', 'c', 1);
+        myGraph.AddEdge('b', 'd', 5);
+        myGraph.AddEdge('c', 'd', 2);
+
+        myGraph.DijkStra('a');
+    }
+    {
+        Matrix graph{
+            {0,        12,       UINT_MAX, UINT_MAX, UINT_MAX, 16, 14},
+            {12,       0,        10,       UINT_MAX, UINT_MAX, 7, UINT_MAX},
+            {UINT_MAX, 10,       0, 3,               5,        6, UINT_MAX},
+            {UINT_MAX, UINT_MAX, 3, 0,               4, UINT_MAX, UINT_MAX},
+            {UINT_MAX, UINT_MAX, 5, 4,               0,        2,  8},
+            {16,       7,        6,        UINT_MAX, 2,        9,  9},
+            {14,       UINT_MAX, UINT_MAX, UINT_MAX, 8,        9,  0}
+        };
+
+        auto results = dijkstra(graph, unsigned int('D' -65));
+        print(results);
+    }
+    
     std::cout << "Hello World!\n";
     system("pause");
 }

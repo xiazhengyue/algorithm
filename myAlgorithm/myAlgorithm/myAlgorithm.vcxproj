@@ -151,11 +151,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="myGraph.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="pow.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="myAlgorithm.cpp" />
+    <ClCompile Include="myGraph.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
